@@ -3,7 +3,7 @@ import { BrowserRouter } from "react-router-dom";
 import { Home } from "./Home";
 
 //tela inicial
-describe('Tela Home', () => {
+describe('Tela  Home', () => {
     test('verificar se o titulo "Gitstats está na página home', () => {
         render(<BrowserRouter><Home /></BrowserRouter>)
         const titulo = screen.getByRole('heading', { level: 1 });

@@ -3,7 +3,7 @@ import { BrowserRouter } from "react-router-dom";
 import { NotFind } from "./NotFind";
 
 //Encontrar o texto de erro na tela
-describe('Tela NotFind', () => {
+describe('Tela  NotFind', () => {
     test('Encontrar o texto de erro 404 na tela', () => {
         render(<BrowserRouter><NotFind /></BrowserRouter>)
         expect(screen.getByText('404')).toBeInTheDocument();
