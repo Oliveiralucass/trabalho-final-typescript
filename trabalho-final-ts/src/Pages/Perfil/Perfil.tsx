@@ -1,4 +1,4 @@
-import userEvent from '@testing-library/user-event';
+// import userEvent from '@testing-library/user-event';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
@@ -74,7 +74,7 @@ export const Perfil:React.FC = () => {
             <div className='perfilContainer'>
               <div>
                 <p>Nome:</p>
-                <h1>{usuario?.name? usuario.name : `Usuário não existe!`}</h1>
+                <h1 data-testid="username">{usuario?.name? usuario.name : `Usuário não existe!`}</h1>
               </div>
             </div>
             <div className='infoContainer'>

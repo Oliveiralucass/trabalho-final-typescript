@@ -1,42 +1,26 @@
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, cleanup, waitFor, findByTestId } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
-import axios from 'axios';
 import { Perfil } from "./Perfil";
+import axiosMock from 'axios';
+// import "jest-dom/extend-expect";
+import axios from 'axios';
+
+jest.mock('axios');
+const mockedAxios = axios as jest.Mocked<typeof axios>;
+afterEach(cleanup);
 
 describe("Tela Perfil", () => {
-     test('verificar foto de perfil', () => {
-        render(<BrowserRouter><Perfil/></BrowserRouter>)
-        // expect(screen.getByText('404')).toBeInTheDocument();
+    
+    test('encontrar o nome do usuário', async () => {
+        mockedAxios.get.mockResolvedValueOnce({ data: {username:'DanielaLeguari'} })
+        const url = 'https://api.github.com/users/';
+        render(<Perfil />)
 
-    })
+        const usuario = await screen.findByTestId('username');
 
-    test('verificar nome do perfil do usuário', () => {
-        render(<BrowserRouter><Perfil/></BrowserRouter>)
-        // expect(screen.getByText('404')).toBeInTheDocument();
-
-    })
-
-    test('verificar localização', () => {
-        render(<BrowserRouter><Perfil/></BrowserRouter>)
-        // expect(screen.getByText('404')).toBeInTheDocument();
-
-    })
-
-    test('verificar número de seguidores', () => {
-        render(<BrowserRouter><Perfil/></BrowserRouter>)
-        // expect(screen.getByText('404')).toBeInTheDocument();
-
-    })
-
-    test('verificar número de quem está sendo seguido', () => {
-        render(<BrowserRouter><Perfil/></BrowserRouter>)
-        // expect(screen.getByText('404')).toBeInTheDocument();
-
-    })
-    test('encontrar o nome repositórios', () => {
-        render(<BrowserRouter><Perfil/></BrowserRouter>)
-        const titulo = screen.getByRole('heading', { level: 3 });
-        expect(titulo.textContent).toBe('Respositórios');
+        expect(usuario).toHaveTextContent('DanielaLeguari');
+        expect(mockedAxios.get).toHaveBeenCalledTimes(1);
+        expect(mockedAxios.get).toHaveBeenCalledWith(url);
     })
 
 
