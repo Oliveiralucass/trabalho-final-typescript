@@ -1,8 +1,8 @@
 // import userEvent from '@testing-library/user-event';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { Container } from './Perfil.styled';
+import { Link, useParams } from 'react-router-dom';
+import { Container, Botao } from './Perfil.styled';
 import { FiGithub } from 'react-icons/fi';
 import { BsFolder2Open } from 'react-icons/bs';
 import { SlNote } from 'react-icons/sl';
@@ -68,7 +68,9 @@ export const Perfil:React.FC = () => {
   }, []);
 
   return (
-    <Container>
+    <>
+      <Botao><Link to='/'>Nova Pesquisa</Link></Botao>
+      <Container>      
       <div className='usuarioContainer'>
         <div>
             <div className='perfilContainer'>
@@ -117,5 +119,7 @@ export const Perfil:React.FC = () => {
         </div>
       </div>
     </Container>
+    </>
+    
   )
 }

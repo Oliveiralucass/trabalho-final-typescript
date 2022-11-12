@@ -1,6 +1,21 @@
 import React from 'react'
 import styled from 'styled-components'
 
+export const Botao = styled.button`
+    margin: 20px 0px 0px 20px;
+    width: 110px;
+    height: 30px;    
+    background-color: var(--cor-titulo);
+    border-radius: 8px;
+    border: none;
+
+    a{
+        text-decoration: none;
+        font-weight: bold;
+        color: var(--cor-fonte-branco);
+    }
+`
+
 export const Container = styled.div`
     width: 100%;
     height: 100%;
