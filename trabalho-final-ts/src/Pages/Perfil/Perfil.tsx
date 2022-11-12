@@ -14,7 +14,7 @@ import { SlUserFollowing } from 'react-icons/sl';
 
 export const Perfil:React.FC = () => {
 
-  const [usuario, setUsuario] = useState<any>([]);
+  const [usuario, setUsuario] = useState<usuarioProps | undefined>(undefined);
   const [projetos, setProjetos] = useState<Array<mapProps>>([]);
 
   type usuarioProps = {
@@ -22,7 +22,8 @@ export const Perfil:React.FC = () => {
     bio: string,
     location: string,
     followers: number,
-    following: number
+    following: number,
+    avatar_url: string // add url
   }
 
   type mapProps = {
@@ -73,28 +74,28 @@ export const Perfil:React.FC = () => {
             <div className='perfilContainer'>
               <div>
                 <p>Nome:</p>
-                <h1>{usuario.name? usuario.name : `Nome não informado`}</h1>
+                <h1>{usuario?.name? usuario.name : `Usuário não existe!`}</h1>
               </div>
             </div>
             <div className='infoContainer'>
               <div>
-                <SlNote fill='white'size={20}/><p>{usuario.bio? usuario.bio : `Sem descrição`}</p>
+                <SlNote fill='white'size={20}/><p>{usuario?.bio? usuario.bio : `Sem descrição`}</p>
               </div>
               <div>
-                <CiLocationOn fill='white'size={20}/><p>{usuario.location? usuario.location : `Localização não informada`}</p>
+                <CiLocationOn fill='white'size={20}/><p>{usuario?.location? usuario.location : `Localização não informada`}</p>
               </div>
               <div className='seguidoresContainer'>
                 <div>
-                  <SlUserFollow fill='white'size={20}/><p>{usuario.followers}</p><p>seguidores</p>
+                  <SlUserFollow fill='white'size={20}/><p>{usuario?.followers}</p><p>seguidores</p>
                 </div>
                 <div>
-                  <SlUserFollowing fill='white'size={20}/><p>{usuario.following}</p><p>Seguindo</p>
+                  <SlUserFollowing fill='white'size={20}/><p>{usuario?.following}</p><p>Seguindo</p>
                 </div>
               </div>
             </div>
         </div>        
         <div>
-          <img src={usuario.avatar_url? usuario.avatar_url : `https://www.inovegas.com.br/site/wp-content/uploads/2017/08/sem-foto.jpg`} alt={"imagem-perfil"} />
+          <img src={usuario?.avatar_url? usuario.avatar_url : `https://www.inovegas.com.br/site/wp-content/uploads/2017/08/sem-foto.jpg`} alt={"imagem-perfil"} />
         </div>
       </div>
       <div className='repoContainer'>
