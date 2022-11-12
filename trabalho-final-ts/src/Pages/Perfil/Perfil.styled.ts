@@ -33,18 +33,16 @@ export const Container = styled.div`
 
     .usuarioContainer {
         display: flex;
-        flex-direction: column;
+        gap: 20px;
         margin-top: 150px;
 
-        .perfilContainer{
-            display: flex;
-            align-items: center;
-            gap: 20px;
+        img {
+            width: 150px;
+            border-radius: 50%;
+        }
 
-            img {
-                width: 150px;
-                border-radius: 50%;
-            }
+        .perfilContainer{
+            margin-top: 30px;
         }
 
         .infoContainer {
@@ -79,7 +77,7 @@ export const Container = styled.div`
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            width: 860px;
+            width: 1200px; //Se diminuir essa largura diminui a qnt de  cards por linha
             gap: 20px;
 
             .iconContainer{
