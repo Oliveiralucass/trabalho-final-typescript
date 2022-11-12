@@ -78,7 +78,7 @@ export const Perfil:React.FC = () => {
               </div>
             </div>
             <div className='infoContainer'>
-              <div>
+              <div className='bioContainer'>
                 <SlNote fill='white'size={20}/><p>{usuario?.bio? usuario.bio : `Sem descrição`}</p>
               </div>
               <div>

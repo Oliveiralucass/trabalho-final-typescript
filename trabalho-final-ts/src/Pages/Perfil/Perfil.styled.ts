@@ -50,16 +50,25 @@ export const Container = styled.div`
             display: flex;
             flex-direction: column;
             gap: 20px;
+
+            .bioContainer{
+                max-width: 500px;
+                line-height: 20px;
+            }
+
             >div{
                 display: flex;
+                align-items: baseline;
                 gap: 10px;
             }
             
             .seguidoresContainer{
                 display: flex;
+                align-items: center;
                 gap: 20px;
                 >div{
                     display: flex;
+                    align-items: baseline;
                     gap: 10px;
                 }
             }
