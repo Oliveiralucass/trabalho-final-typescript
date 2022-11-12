@@ -11,16 +11,16 @@ export const Home = () => {
   type THome ={
     username: string
   }
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const {register, handleSubmit} = useForm<THome>();
   const onSubmit = (data: {username: string}) => {
     console.log(data.username);
 
-    const username = data.username
+    const username = data.username;
 
-    navigate(`/perfil/${username}`)
-  }
+    navigate(`/perfil/${username}`);
+   }
 
   return (
     <Container>
