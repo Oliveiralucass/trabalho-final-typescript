@@ -17,6 +17,21 @@ export const Perfil:React.FC = () => {
   const [usuario, setUsuario] = useState<any>([]);
   const [projetos, setProjetos] = useState<Array<mapProps>>([]);
 
+  type usuarioProps = {
+    name: string,
+    bio: string,
+    location: string,
+    followers: number,
+    following: number
+  }
+
+  type mapProps = {
+    id : number;
+    name : string;
+    description : string;
+    language: string
+  }
+
   const { user } = useParams();
 
   const api = {
@@ -50,13 +65,6 @@ export const Perfil:React.FC = () => {
       getApi();
       getApiRepo();
   }, []);
-
-  type mapProps = {
-    id : number;
-    name : string;
-    description : string;
-    language: string
-  }
 
   return (
     <Container>
