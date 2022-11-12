@@ -15,20 +15,31 @@ import { SlUserFollowing } from 'react-icons/sl';
 export const Perfil:React.FC = () => {
 
   const [usuario, setUsuario] = useState<any>([]);
-  const [projetos, setProjetos] = useState<any>([]);
+  const [projetos, setProjetos] = useState<Array<mapProps>>([]);
 
   const { user } = useParams();
 
+  const api = {
+    baseUrl: 'https://api.github.com/users/',
+    baseUrlRepo: `https://api.github.com/users/${user}/repos`,
+    clientId: 'c752c51d06785ca6309a',
+    clientSecret: '3b95cacb7875bf317fdfaea051d698aba740e413'
+    }
+
+    const link = `${api.baseUrl}${user}?client_id=${api.clientId}?client_secret=${api.clientSecret}`
+
   const getApi = () =>{
-    axios.get(`https://api.github.com/users/${user}`, {})
+    axios.get(`${link}`, {})
     .then(response => {
+      console.log(response.data);
       setUsuario(response.data);
     })
     .catch(error => console.log(error));
   }
 
+  const linkRepo = `${api.baseUrlRepo}?client_id=${api.clientId}?client_secret=${api.clientSecret}`
   const getApiRepo = () =>{
-    axios.get(`https://api.github.com/users/${user}/repos`, {})
+    axios.get(`${linkRepo}`, {})
     .then(response => {
       setProjetos(response.data)
     })
@@ -36,11 +47,16 @@ export const Perfil:React.FC = () => {
   }
 
   useEffect(()=>{
-      console.log(usuario);
       getApi();
       getApiRepo();
   }, []);
 
+  type mapProps = {
+    id : number;
+    name : string;
+    description : string;
+    language: string
+  }
 
   return (
     <Container>
@@ -49,7 +65,7 @@ export const Perfil:React.FC = () => {
             <div className='perfilContainer'>
               <div>
                 <p>Nome:</p>
-                <h1>{usuario.name}</h1>
+                <h1>{usuario.name? usuario.name : `Nome não informado`}</h1>
               </div>
             </div>
             <div className='infoContainer'>
@@ -70,13 +86,13 @@ export const Perfil:React.FC = () => {
             </div>
         </div>        
         <div>
-          <img src={usuario.avatar_url} alt="imagem-perfil" />
+          <img src={usuario.avatar_url? usuario.avatar_url : `https://www.inovegas.com.br/site/wp-content/uploads/2017/08/sem-foto.jpg`} alt={"imagem-perfil"} />
         </div>
       </div>
       <div className='repoContainer'>
         <h3>Respositórios</h3>
         <div className='containerCardsGeral'>
-          {projetos.map((el: any)=>{
+          {projetos.map((el)=>{
            return( 
               <li key={el.id} className='cardContainer'>
                 <div className='iconContainer'>

@@ -91,7 +91,7 @@ export const Container = styled.div`
                 display: flex;
                 align-items: center;
                 width: 250px;
-                height: 250px;
+                /* height: 250px; */
                 border-radius: 10px;
                 flex-direction: column;
                 gap: 20px;
