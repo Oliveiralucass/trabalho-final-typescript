@@ -92,12 +92,16 @@ export const Container = styled.div`
                 padding: 20px;
                 display: flex;
                 align-items: center;
-                width: 200px;
-                height: 200px;
+                width: 250px;
+                height: 250px;
                 border-radius: 10px;
                 flex-direction: column;
                 gap: 20px;
                 background-color: #33364e;
+
+                & p:last-child{
+                    margin-top: 50px;
+                }
             }
         }
     }
