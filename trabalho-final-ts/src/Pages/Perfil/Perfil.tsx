@@ -1,6 +1,6 @@
 import userEvent from '@testing-library/user-event';
 import axios from 'axios';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Container } from './Perfil.styled';
 import { FiGithub } from 'react-icons/fi';
@@ -14,25 +14,44 @@ import { SlUserFollowing } from 'react-icons/sl';
 
 export const Perfil:React.FC = () => {
 
-  const { id } = useParams()
+  const [usuario, setUsuario] = useState<any>([]);
+  const [projetos, setProjetos] = useState<string[]>([]);
+
+  const { user } = useParams();
+
+  const getApi = () =>{
+    axios.get(`https://api.github.com/users/${user}`, {})
+    .then(response => {
+      setUsuario(response.data);
+    })
+    .catch(error => console.log(error));
+  }
+
+  const getApiRepo = () =>{
+    axios.get(`https://api.github.com/users/${user}/repos`, {})
+    .then(response => console.log(response))
+    .catch(error => console.log(error));
+  }
 
   useEffect(()=>{
-      console.log(id);
-
+      console.log(usuario);
+      // getApi();
+      // getApiRepo();
   }, []);
-
 
 
   const repositorios = [
     {
       'nomeRepositorio': 'site com react',
       'descricaoRepo': 'criado com react',
-      'linguagens': 'react js'
+      'linguagens': 'react js',
+      'id': 1
     },
     {
       'nomeRepositorio': 'site filmes',
       'descricaoRepo': 'criado com react',
-      'linguagens': 'html css js'
+      'linguagens': 'html css js',
+      'id': 2
     },
     {
       'nomeRepositorio': 'site com react',
@@ -42,35 +61,41 @@ export const Perfil:React.FC = () => {
     {
       'nomeRepositorio': 'site com react',
       'descricaoRepo': 'criado com react',
-      'linguagens': 'react js'
+      'linguagens': 'react js',
+      'id': 3
     },
     {
       'nomeRepositorio': 'site com react',
       'descricaoRepo': 'criado com react',
-      'linguagens': 'react js'
+      'linguagens': 'react js',
+      'id': 4
     },
     {
       'nomeRepositorio': 'site com react',
       'descricaoRepo': 'criado com react',
-      'linguagens': 'react js'
-    },
-    
-    {
-      'nomeRepositorio': 'site com react',
-      'descricaoRepo': 'criado com react',
-      'linguagens': 'react js'
+      'linguagens': 'react js',
+      'id': 5
     },
     
     {
       'nomeRepositorio': 'site com react',
       'descricaoRepo': 'criado com react',
-      'linguagens': 'react js'
+      'linguagens': 'react js',
+      'id': 6
     },
     
     {
       'nomeRepositorio': 'site com react',
       'descricaoRepo': 'criado com react',
-      'linguagens': 'react js'
+      'linguagens': 'react js',
+      'id': 7
+    },
+    
+    {
+      'nomeRepositorio': 'site com react',
+      'descricaoRepo': 'criado com react',
+      'linguagens': 'react js',
+      'id': 8
     },
   ];
 
@@ -81,22 +106,22 @@ export const Perfil:React.FC = () => {
             <div className='perfilContainer'>
               <div>
                 <p>Nome:</p>
-                <h1>Nome do usuário</h1>
+                <h1>{usuario.name}</h1>
               </div>
             </div>
             <div className='infoContainer'>
               <div>
-                <SlNote fill='white'size={20}/><p>Descrição do perfil</p>
+                <SlNote fill='white'size={20}/><p>{usuario.bio? usuario.bio : `Sem descrição`}</p>
               </div>
               <div>
-                <CiLocationOn fill='white'size={20}/><p>Localização</p>
+                <CiLocationOn fill='white'size={20}/><p>{usuario.location? usuario.location : `Localização não informada`}</p>
               </div>
               <div className='seguidoresContainer'>
                 <div>
-                  <SlUserFollow fill='white'size={20}/><p>20</p><p>seguidores</p>
+                  <SlUserFollow fill='white'size={20}/><p>{usuario.followers}</p><p>seguidores</p>
                 </div>
                 <div>
-                  <SlUserFollowing fill='white'size={20}/><p>85</p><p>Seguindo</p>
+                  <SlUserFollowing fill='white'size={20}/><p>{usuario.following}</p><p>Seguindo</p>
                 </div>
               </div>
             </div>
@@ -110,7 +135,7 @@ export const Perfil:React.FC = () => {
         <div className='containerCardsGeral'>
           {repositorios.map<any>(el=>{
            return( 
-              <li key={el.nomeRepositorio} className='cardContainer'>
+              <li key={el.id} className='cardContainer'>
                 <div className='iconContainer'>
                 <BsFolder2Open fill='white'size={30}/>
                 <FiGithub fill='white'size={30}/>

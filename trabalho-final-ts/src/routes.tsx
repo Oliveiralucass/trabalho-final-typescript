@@ -13,7 +13,7 @@ export const AppRoutes = () => {
 
             <Route path='/perfil'>
               <Route index element={<Perfil />} />
-              <Route path="/perfil/:id" element={<Perfil />}/>
+              <Route path="/perfil/:user" element={<Perfil />}/>
             </Route>
 
             <Route path='*' element={<NotFind />} />
