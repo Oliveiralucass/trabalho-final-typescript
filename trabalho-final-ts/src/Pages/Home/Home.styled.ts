@@ -58,9 +58,17 @@ export const Container = styled.div`
                 border-radius: 6px;
                 max-height: 48px;
                 padding: 12px;
+                opacity: .8;
+                cursor: pointer;
+
                 &::placeholder{
                     font-size: 20px;
-                }   
+                }
+                
+                &:hover{
+                    transform: scale(1.02);
+                    opacity: 1;
+                }
             }
         }
 

@@ -13,9 +13,11 @@ export const Botao = styled.button`
     cursor: pointer;
     transition: .5s;
     box-shadow: 0px 0px 12px 0px rgba(0,0,0,0.75);
+    opacity: .8;
 
     &:hover{
         transform: scale(1.05);
+        opacity: 1;
     }
 `
 
