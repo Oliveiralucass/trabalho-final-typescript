@@ -10,8 +10,6 @@ import { CiLocationOn } from 'react-icons/ci';
 import { SlUserFollow } from 'react-icons/sl';
 import { SlUserFollowing } from 'react-icons/sl';
 
-
-
 export const Perfil:React.FC = () => {
 
   const [usuario, setUsuario] = useState<usuarioProps | undefined>(undefined);
