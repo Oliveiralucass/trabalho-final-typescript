@@ -7,7 +7,7 @@
 
 
 # Como rodar o projeto utilizando Vercel
-- Acesse o link do vercel no canto superior direito (trabalho-final-typescript.vercel.app)
+- Acesse o link do vercel no canto superior direito ou <a href="trabalho-final-typescript.vercel.app">Acesse aqui</a>
 
 # Como rodar o projeto localmente
 - Clone ou baixe o repositório
