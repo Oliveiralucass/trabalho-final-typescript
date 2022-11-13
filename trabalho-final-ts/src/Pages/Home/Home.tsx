@@ -22,6 +22,8 @@ export const Home = () => {
     navigate(`/perfil/${username}`);
    }
 
+   let [habilitar, setHabilitar] = useState<boolean>(true);
+
   return (
     <Container>
       <div className='main'>
@@ -29,8 +31,8 @@ export const Home = () => {
         <p>Digite seu nome de usuário e veja informações sobre seu perfil</p>
         <div>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <input type='text' id='username' placeholder='Username' {...register("username")}/>
-            <button type='submit'><FaPaperPlane fill='white'size={20}/></button>
+            <input type='text' id='username' placeholder='Username' {...register("username")} onChange={()=> setHabilitar(false)}/>
+            <button type='submit' disabled={habilitar}><FaPaperPlane fill='white'size={20}/></button>
           </form>
         </div>
       </div>
