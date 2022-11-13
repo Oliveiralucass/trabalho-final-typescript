@@ -1,6 +1,7 @@
 // import userEvent from '@testing-library/user-event';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import {Navigate, useNavigate} from 'react-router-dom';
 import { Link, useParams } from 'react-router-dom';
 import { Container, Botao } from './Perfil.styled';
 import { FiGithub } from 'react-icons/fi';
@@ -57,6 +58,8 @@ export const Perfil:React.FC = () => {
 
   const linkRepo = `${api.baseUrlRepo}?client_id=${api.clientId}?client_secret=${api.clientSecret}`
 
+  const navigate = useNavigate();
+
   const getApiRepo = () =>{
     axios.get(`${linkRepo}`, {})
     .then(response => {
@@ -65,7 +68,13 @@ export const Perfil:React.FC = () => {
       setEsconder(`usuarioContainer`);
       setEscondoRepo(`repoContainer`);
     })
-    .catch(error => console.log(error));
+    .catch(error => {
+      console.log(error);
+      setTimeout(() => {
+        setVisibilidade(`hide`);
+        navigate(`/`);
+      }, 4000);
+    });
   }
 
   useEffect(()=>{
