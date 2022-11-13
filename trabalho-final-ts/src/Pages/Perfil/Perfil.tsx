@@ -11,9 +11,13 @@ import { SlUserFollow } from 'react-icons/sl';
 import { SlUserFollowing } from 'react-icons/sl';
 
 export const Perfil:React.FC = () => {
-
+  
   const [usuario, setUsuario] = useState<usuarioProps | undefined>(undefined);
   const [projetos, setProjetos] = useState<Array<mapProps>>([]);
+
+  let [visibilidade, setVisibilidade] = useState<string>(`c-loader`);
+  let [esconder, setEsconder] = useState<string>(`hide`);
+  let [esconderRepo, setEscondoRepo] = useState<string>(`hide`);
 
   type usuarioProps = {
     name: string,
@@ -21,7 +25,7 @@ export const Perfil:React.FC = () => {
     location: string,
     followers: number,
     following: number,
-    avatar_url: string // add url
+    avatar_url: string 
   }
 
   type mapProps = {
@@ -40,7 +44,7 @@ export const Perfil:React.FC = () => {
     clientSecret: '3b95cacb7875bf317fdfaea051d698aba740e413'
     }
 
-    const link = `${api.baseUrl}${user}?client_id=${api.clientId}?client_secret=${api.clientSecret}`
+  const link = `${api.baseUrl}${user}?client_id=${api.clientId}?client_secret=${api.clientSecret}`
 
   const getApi = () =>{
     axios.get(`${link}`, {})
@@ -52,10 +56,14 @@ export const Perfil:React.FC = () => {
   }
 
   const linkRepo = `${api.baseUrlRepo}?client_id=${api.clientId}?client_secret=${api.clientSecret}`
+
   const getApiRepo = () =>{
     axios.get(`${linkRepo}`, {})
     .then(response => {
-      setProjetos(response.data)
+      setProjetos(response.data);
+      setVisibilidade(`hide`);
+      setEsconder(`usuarioContainer`);
+      setEscondoRepo(`repoContainer`);
     })
     .catch(error => console.log(error));
   }
@@ -64,16 +72,6 @@ export const Perfil:React.FC = () => {
       getApi();
       getApiRepo();
   }, []);
-
-  let [visibilidade, setVisibilidade] = useState<string>(`c-loader`);
-  let [esconder, setEsconder] = useState<string>(`hide`);
-  let [esconderRepo, setEscondoRepo] = useState<string>(`hide`);
-
-  setTimeout(() => {
-    setVisibilidade(`hide`);
-    setEsconder(`usuarioContainer`);
-    setEscondoRepo(`repoContainer`);
-  }, 500);
 
   return (
     <>
