@@ -1,7 +1,48 @@
 import React from 'react'
 import styled from 'styled-components'
 
+export const Botao = styled.button`
+    margin: 20px 0px 0px 20px;
+    width: 110px;
+    height: 30px;    
+    background-color: var(--cor-titulo);
+    color: white;
+    font-weight: bold;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: .5s;
+    box-shadow: 0px 0px 12px 0px rgba(0,0,0,0.75);
+    opacity: .8;
+
+    &:hover{
+        transform: scale(1.05);
+        opacity: 1;
+    }
+`
+
 export const Container = styled.div`
+
+.hide {
+    display: none;
+}
+
+.c-loader {
+    animation: is-rotating 1s infinite;
+    border: 6px solid #e5e5e5;
+    border-radius: 50%;
+    border-top-color: #51d4db;
+    height: 60px;
+    width: 60px;
+    margin-top: 200px;
+  }
+  
+  @keyframes is-rotating {
+    to {
+      transform: rotate(1turn);
+    }
+  }
+  
     width: 100%;
     height: 100%;
     display: flex;
@@ -39,6 +80,8 @@ export const Container = styled.div`
         img {
             width: 150px;
             border-radius: 50%;
+            box-shadow: 0px 0px 50px 0px rgba(0,0,0,.9);
+            transition: .5;
         }
 
         .perfilContainer{
@@ -50,16 +93,25 @@ export const Container = styled.div`
             display: flex;
             flex-direction: column;
             gap: 20px;
+
+            .bioContainer{
+                max-width: 500px;
+                line-height: 20px;
+            }
+
             >div{
                 display: flex;
+                align-items: baseline;
                 gap: 10px;
             }
             
             .seguidoresContainer{
                 display: flex;
+                align-items: center;
                 gap: 20px;
                 >div{
                     display: flex;
+                    align-items: baseline;
                     gap: 10px;
                 }
             }
@@ -84,6 +136,7 @@ export const Container = styled.div`
                 width: 100%;
                 display: flex;
                 justify-content: space-between;
+                
             }
     
             .cardContainer {
@@ -91,18 +144,21 @@ export const Container = styled.div`
                 display: flex;
                 align-items: center;
                 width: 250px;
-                /* height: 250px; */
                 border-radius: 10px;
                 flex-direction: column;
                 gap: 20px;
                 background-color: #33364e;
+                box-shadow: 0px 0px 12px 0px rgba(0,0,0,0.75);
+
+                & p:nth-child(3){
+                    height: 80px;
+                }
 
                 & p:last-child{
-                    margin-top: 50px;
+                    margin-top: 10px;
                 }
             }
         }
     }
 
 `
-
