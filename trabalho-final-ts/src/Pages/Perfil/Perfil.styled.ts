@@ -121,8 +121,12 @@ export const Container = styled.div`
                 gap: 20px;
                 background-color: #33364e;
 
+                & p:nth-child(3){
+                    height: 80px;
+                }
+
                 & p:last-child{
-                    margin-top: 50px;
+                    margin-top: 10px;
                 }
             }
         }
