@@ -11,7 +11,6 @@ import { SlUserFollow } from 'react-icons/sl';
 import { SlUserFollowing } from 'react-icons/sl';
 
 
-
 export const Perfil:React.FC = () => {
 
   const [usuario, setUsuario] = useState<usuarioProps | undefined>(undefined);
@@ -43,6 +42,7 @@ export const Perfil:React.FC = () => {
     }
 
     const link = `${api.baseUrl}${user}?client_id=${api.clientId}?client_secret=${api.clientSecret}`
+    
 
   const getApi = () =>{
     axios.get(`${link}`, {})
