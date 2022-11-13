@@ -65,11 +65,22 @@ export const Perfil:React.FC = () => {
       getApiRepo();
   }, []);
 
+  let [visibilidade, setVisibilidade] = useState<string>(`c-loader`);
+  let [esconder, setEsconder] = useState<string>(`hide`);
+  let [esconderRepo, setEscondoRepo] = useState<string>(`hide`);
+
+  setTimeout(() => {
+    setVisibilidade(`hide`);
+    setEsconder(`usuarioContainer`);
+    setEscondoRepo(`repoContainer`);
+  }, 500);
+
   return (
     <>
       <Link to='/'><Botao>Nova Pesquisa</Botao></Link>
-      <Container>      
-      <div className='usuarioContainer'>
+      <Container> 
+        <div className={visibilidade}></div>     
+      <div className={esconder}>
         <div>
             <div className='perfilContainer'>
               <div>
@@ -98,7 +109,7 @@ export const Perfil:React.FC = () => {
           <img src={usuario?.avatar_url? usuario.avatar_url : `https://www.inovegas.com.br/site/wp-content/uploads/2017/08/sem-foto.jpg`} alt={"imagem-perfil"} />
         </div>
       </div>
-      <div className='repoContainer'>
+      <div className={esconderRepo}>
         <h3>Respositórios</h3>
         <div className='containerCardsGeral'>
           {projetos.map((el)=>{

@@ -22,6 +22,27 @@ export const Botao = styled.button`
 `
 
 export const Container = styled.div`
+
+.hide {
+    display: none;
+}
+
+.c-loader {
+    animation: is-rotating 1s infinite;
+    border: 6px solid #e5e5e5;
+    border-radius: 50%;
+    border-top-color: #51d4db;
+    height: 60px;
+    width: 60px;
+    margin-top: 200px;
+  }
+  
+  @keyframes is-rotating {
+    to {
+      transform: rotate(1turn);
+    }
+  }
+  
     width: 100%;
     height: 100%;
     display: flex;
