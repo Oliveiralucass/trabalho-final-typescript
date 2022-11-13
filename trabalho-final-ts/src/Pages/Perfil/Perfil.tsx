@@ -69,7 +69,7 @@ export const Perfil:React.FC = () => {
 
   return (
     <>
-      <Botao><Link to='/'>Nova Pesquisa</Link></Botao>
+      <Link to='/'><Botao>Nova Pesquisa</Botao></Link>
       <Container>      
       <div className='usuarioContainer'>
         <div>

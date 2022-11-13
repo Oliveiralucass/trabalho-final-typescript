@@ -6,13 +6,16 @@ export const Botao = styled.button`
     width: 110px;
     height: 30px;    
     background-color: var(--cor-titulo);
-    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    border-radius: 10px;
     border: none;
+    cursor: pointer;
+    transition: .5s;
+    box-shadow: 0px 0px 12px 0px rgba(0,0,0,0.75);
 
-    a{
-        text-decoration: none;
-        font-weight: bold;
-        color: var(--cor-fonte-branco);
+    &:hover{
+        transform: scale(1.05);
     }
 `
 
@@ -54,6 +57,8 @@ export const Container = styled.div`
         img {
             width: 150px;
             border-radius: 50%;
+            box-shadow: 0px 0px 50px 0px rgba(0,0,0,.9);
+            transition: .5;
         }
 
         .perfilContainer{
@@ -108,6 +113,7 @@ export const Container = styled.div`
                 width: 100%;
                 display: flex;
                 justify-content: space-between;
+                
             }
     
             .cardContainer {
@@ -115,11 +121,11 @@ export const Container = styled.div`
                 display: flex;
                 align-items: center;
                 width: 250px;
-                /* height: 250px; */
                 border-radius: 10px;
                 flex-direction: column;
                 gap: 20px;
                 background-color: #33364e;
+                box-shadow: 0px 0px 12px 0px rgba(0,0,0,0.75);
 
                 & p:nth-child(3){
                     height: 80px;
